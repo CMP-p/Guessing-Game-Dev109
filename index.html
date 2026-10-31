@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Emmanuelle">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/styles.css"> <!-- file yet to exist -->
+</head>
+
+<body>
+    <header>
+        Header content
+    </header>
+
+    <main>
+        main content
+    </main>
+
+    <footer>
+        footing content
+    </footer>
+    <script>
+        /*
+        Initializes a random number (see code fragment below) to a value between 1 and 10, inclusive.
+        Repeatedly asks the player to guess what the number is until the number is guessed.
+        If the guess is higher than the number, tell the player their guess is too high and that they should guess again.
+        If the guess is lower than the number, tell the player their guess is too low and that they should guess again.
+        If the guess is equal to the number, tell them:
+        That their guess was correct.
+        How many guesses they made.
+        Map out the application logic, loops and all before you begin. 
+
+        Bonus points when you submit your diagram, even if a phone photo of a pen and paper drawing.
+        ===============================================================
+        randomNumber =
+        document.getElementById("demo").innerHTML = randomNumber;
+        console.log(randomNumber);
+        ===============================================================
+        */
+        // The only UX is a prompt menu Nothing displayed on the DOM
+
+        // Gerate a random number. 
+        // prompt "Guess a Number between 1 and 10."
+        // prompt "Your guess was too low, guess again."
+        // prompt "You guessed it in numberOfGuesses guesses!"
+        // prompt "Would you like to go again?"
+        let continueGuessing = true;
+        let randomNumber;
+        let userGuess;
+        let numberOfGuesses = 0;
+        while (continueGuessing) {
+            randomNumber =  Math.floor(Math.random() * 10) +1;
+            console.log('randomNumber generated')
+            userGuess = prompt('Guess a Number between 1 and 10.')
+            numberOfGuesses ++
+            while (userGuess !== randomNumber) {
+                if (userGuess > randomNumber){
+                    prompt('Your guess was too high, guess again.')
+                }
+                else if (userGuess < randomNumber) {
+                    prompt('Your guess was too low, guess again.')
+                }
+                else {
+                    console.error('program error')
+                    alert('program error')
+                }
+            }
+            prompt(`You guessed it in numberOfGuesses guesses!`) // Matches UX design
+            continueGuessing = prompt('Would you like to go again?')
+        }
+
+
+
+
+        /*Bonus: Use nested loops to allow the game to repeat until the user decides not to play again.
+
+        Code must function as required
+        All UX content must be exactly like the examples except for the hashed number at the top of the interface.
+        All UX content must follow all grammatical rules, correct spelling, capitalization, and punctuation.*/
+    </script>
+</body>
+</html>
