@@ -46,29 +46,52 @@
         // prompt "Your guess was too low, guess again."
         // prompt "You guessed it in numberOfGuesses guesses!"
         // prompt "Would you like to go again?"
+
+        // gen num
+        // collect first guess
+            // increase counter
+            // collect another guess
+                //is too low, guesss again
+                //is too high, guess again
+                //is correct, move on
+            //
         let continueGuessing = true;
         let randomNumber;
         let userGuess;
         let numberOfGuesses = 0;
         while (continueGuessing) {
+            numberOfGuesses = 0;
             randomNumber =  Math.floor(Math.random() * 10) +1;
-            console.log('randomNumber generated')
-            userGuess = prompt('Guess a Number between 1 and 10.')
-            numberOfGuesses ++
-            while (userGuess !== randomNumber) {
-                if (userGuess > randomNumber){
-                    prompt('Your guess was too high, guess again.')
+            userGuess = prompt('Guess a Number between 1 and 10.');
+
+            while (true) {
+                numberOfGuesses ++
+                if (userGuess > randomNumber){ // implicit conversion?
+                    userGuess = prompt('Your guess was too high, guess again.')
                 }
                 else if (userGuess < randomNumber) {
-                    prompt('Your guess was too low, guess again.')
+                    userGuess = prompt('Your guess was too low, guess again.')
                 }
                 else {
-                    console.error('program error')
-                    alert('program error')
+                    prompt(`You guessed it in ${numberOfGuesses} guesses!`) // Matches UX design
+                    break
                 }
             }
-            prompt(`You guessed it in numberOfGuesses guesses!`) // Matches UX design
-            continueGuessing = prompt('Would you like to go again?')
+
+            while (continueGuessing){     
+                continueGuessing = prompt('Would you like to go again? y/n').toLowerCase()
+                if (continueGuessing == 'y'){
+                    continueGuessing = true;
+                    break
+                }
+                else if (continueGuessing === 'n') {
+                    continueGuessing = false
+                }
+                else {
+                    alert('please type y or n')
+                    continueGuessing = true;
+                }
+            }
         }
 
 
